@@ -44,7 +44,7 @@ Four daemons are started:
   * A notify daemon that logs a hello message every 60 seconds.
   * It notifies systemd as soon as it starts up.
 
-test-no-notify
+* test-no-notify
   * A notify daemon that logs a hello message every 60 seconds.
   * It **DOES NOT** notify ststemd which causes the snap installation to fail.
 
