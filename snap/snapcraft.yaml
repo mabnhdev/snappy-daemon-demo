@@ -1,0 +1,39 @@
+name: snappy-daemon-demo
+version: '0.1'
+summary: Daemo snappy daemonization.
+description: |
+  This is my-snap's description. You have a paragraph or two to tell the
+  most important story about your snap. Keep it under 100 words though,
+  we live in tweetspace and your description wants to look good in the snap
+  store.
+
+grade: devel
+confinement: devmode
+
+apps:
+
+  test-oneshot:
+    command: usr/bin/test-daemon --myid test-oneshot --exitafter 0
+    daemon: oneshot
+
+  test-simple:
+    command: usr/bin/test-daemon --myid test-simple
+    daemon: simple
+
+  test-notify:
+    command: usr/bin/test-daemon --myid test-notify --daemonize --notify
+    daemon: notify
+
+  # Tell snappy to expect notify, but no notification...
+  test-no-notify:
+    command: usr/bin/test-daemon --myid test-no-notify --daemonize
+    daemon: notify
+
+parts:
+  daemon-test:
+    plugin: dump
+    stage-packages:
+      - python-daemon
+      - python-systemd
+      - bash
+    source: src/tests
