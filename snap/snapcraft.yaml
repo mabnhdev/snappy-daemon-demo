@@ -20,6 +20,11 @@ apps:
     command: usr/bin/test-daemon --myid test-simple
     daemon: simple
 
+  # Snappy hangs when python daemon library is used.
+#  test-forking:
+#    command: usr/bin/test-daemon --myid test-forking
+#    daemon: forking
+
   test-notify:
     command: usr/bin/test-daemon --myid test-notify --daemonize --notify
     daemon: notify

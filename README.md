@@ -35,7 +35,7 @@ This was tested on a **Ubuntu Xenial Core** system.
 Four daemons are started:
 
 * test-oneshot
-  * A oneshot daemone that logs a hello message once and exits.
+  * A oneshot daemon that logs a hello message once and exits.
 
 * test-simple
   * A simple daemon that logs a hello message every 60 seconds.
@@ -46,7 +46,10 @@ Four daemons are started:
 
 * test-no-notify
   * A notify daemon that logs a hello message every 60 seconds.
-  * It **DOES NOT** notify ststemd which causes the snap installation to fail.
+  * It **DOES NOT** notify systemd which causes the snap installation to fail.
+
+* test-forking
+  * Currently commented out because snappy is not playing nicely with python daemonization code.
 
 This illustrates two immediate issues.
 
@@ -59,3 +62,9 @@ This illustrates two immediate issues.
 2. When a snap installation fails, cleanup is incomplete.
 
    This snap fails to install, but the test-notify daemon is left running and orphaned.
+
+3. Snappy also hangs when instatiating test-forking.
+
+   The test-daemon uses the standard python daemon library to daemonize, but this does not seem sufficient for snappy.
+
+   Like the "test-no-notify" hang, the snap installation failure leaves some of the other daemons running and orphaned.
