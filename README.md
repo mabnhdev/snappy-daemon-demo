@@ -7,25 +7,20 @@ This repository is used to illustrate issues/questions about Snappy daemonizatio
 
 All daemons use a common "daemon" implementation found in src/tests/usr/bin/test-daemon
 
-src/tests/usr/bin/test-daemon --help
+```
+src/tests/usr/bin/test-daemon --help  
 
-usage: test-daemon [-h] [--myid MYID] [--daemonize] [--notify]
+usage: test-daemon [-h] [--myid MYID] [--daemonize] [--notify]  
+                   [--exitafter EXITAFTER] [--exitstatus EXITSTATUS]  
 
-                   [--exitafter EXITAFTER] [--exitstatus EXITSTATUS]
-
-optional arguments:
-
-  -h, --help            show this help message and exit
-
-  --myid MYID
-
-  --daemonize
-
-  --notify
-
-  --exitafter EXITAFTER exit after N minutes.
-
+optional arguments:  
+  -h, --help            show this help message and exit  
+  --myid MYID  
+  --daemonize  
+  --notify  
+  --exitafter EXITAFTER exit after N minutes.  
   --exitstatus EXITSTATUS exit status to return.
+```
 
 
 ## Test Snap ##
@@ -41,7 +36,7 @@ optional arguments:
 
 This was tested on a **Ubuntu Xenial Core** system.
 
-Four daemons are started:
+The following daemons are started:
 
 * test-oneshot
   * A oneshot daemon that logs a hello message once and exits.
