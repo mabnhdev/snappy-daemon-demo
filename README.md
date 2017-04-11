@@ -2,23 +2,31 @@
 
 This repository is used to illustrate issues/questions about Snappy daemonization bahavior.
 
+
 ## Test Daemon ##
 
 All daemons use a common "daemon" implementation found in src/tests/usr/bin/test-daemon
 
 src/tests/usr/bin/test-daemon --help
+
 usage: test-daemon [-h] [--myid MYID] [--daemonize] [--notify]
+
                    [--exitafter EXITAFTER] [--exitstatus EXITSTATUS]
 
 optional arguments:
+
   -h, --help            show this help message and exit
+
   --myid MYID
+
   --daemonize
+
   --notify
-  --exitafter EXITAFTER
-                        exit after N minutes.
-  --exitstatus EXITSTATUS
-                        exit status to return.
+
+  --exitafter EXITAFTER exit after N minutes.
+
+  --exitstatus EXITSTATUS exit status to return.
+
 
 ## Test Snap ##
 
@@ -27,6 +35,7 @@ optional arguments:
 
 * To remove the snap:
   * sudo snap remove snappy-daemon-demo
+
 
 ## Version 0.1 ##
 
@@ -51,7 +60,7 @@ Four daemons are started:
 * test-forking
   * Currently commented out because snappy is not playing nicely with python daemonization code.
 
-This illustrates two immediate issues.
+This illustrates some immediate issues.
 
 1. Snap "hangs" trying to start up *test-no-notify* and fails to start several of the other daemons.
 
@@ -61,7 +70,7 @@ This illustrates two immediate issues.
 
 2. When a snap installation fails, cleanup is incomplete.
 
-   This snap fails to install, but the test-notify daemon is left running and orphaned.
+   This snap fails to install, but other started daemons are left running and orphaned.
 
 3. Snappy also hangs when instatiating test-forking.
 

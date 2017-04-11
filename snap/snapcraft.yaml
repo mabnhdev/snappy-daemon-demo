@@ -31,7 +31,7 @@ apps:
 
   # Tell snappy to expect notify, but no notification...
   test-no-notify:
-    command: usr/bin/test-daemon --myid test-no-notify --daemonize
+    command: usr/bin/test-daemon --myid test-no-notify --daemonize --notify
     daemon: notify
 
 parts:
