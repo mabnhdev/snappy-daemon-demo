@@ -28,11 +28,12 @@ apps:
   test-notify:
     command: usr/bin/test-daemon --myid test-notify --daemonize --notify
     daemon: notify
+    post-stop-command: /bin/ls $SNAP/etc
 
   # Tell snappy to expect notify, but no notification...
-  test-no-notify:
-    command: usr/bin/test-daemon --myid test-no-notify --daemonize --notify
-    daemon: notify
+#  test-no-notify:
+#    command: usr/bin/test-daemon --myid test-no-notify --daemonize --notify
+#    daemon: notify
 
 parts:
   daemon-test:
